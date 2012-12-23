@@ -80,4 +80,13 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # POST /users/1/login
+  def login
+    @return_code = 0
+    user = User.find(params[:id])
+		@return_code=1 if user.passwd.eql?(params[:passwd])
+    @return_code
+  end
+
 end
